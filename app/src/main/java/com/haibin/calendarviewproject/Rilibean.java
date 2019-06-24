@@ -56,15 +56,15 @@ public class Rilibean {
         public static class DataBean {
             @Override
             public String toString() {
-                return "DataBean{" +
-                        "avoid='" + avoid + '\'' +
-                        ", animalsYear='" + animalsYear + '\'' +
-                        ", weekday='" + weekday + '\'' +
-                        ", suit='" + suit + '\'' +
-                        ", lunarYear='" + lunarYear + '\'' +
-                        ", lunar='" + lunar + '\'' +
-                        ", yearmonth='" + yearmonth + '\'' +
-                        ", date='" + date + '\'' +
+                return "DataBean{" +'\n'+
+                        "avoid='" + avoid + '\n' +
+                        "animalsYear='" + animalsYear + '\n' +
+                        "weekday='" + weekday + '\n' +
+                        "suit='" + suit + '\n' +
+                        "lunarYear='" + lunarYear + '\n' +
+                        "lunar='" + lunar + '\n' +
+                        "yearmonth='" + yearmonth + '\n' +
+                        "date='" + date + '\n' +
                         '}';
             }
 
