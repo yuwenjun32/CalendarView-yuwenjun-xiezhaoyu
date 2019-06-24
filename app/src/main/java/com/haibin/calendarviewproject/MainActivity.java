@@ -191,6 +191,10 @@ public class MainActivity extends BaseActivity implements
                 calendar.getLeapMonth() == 0 ? "否" : String.format("闰%s月", calendar.getLeapMonth()));
     }
 
+    /**
+     * 获取API数据
+     * @param time
+     */
     public void Setdata(final String time){
         new Thread(new Runnable() {
             @Override
@@ -203,6 +207,9 @@ public class MainActivity extends BaseActivity implements
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+                                /**
+                                 * 获取数据
+                                 */
                                 tttt.setText(json.getResult().getData().toString());
                             }
                         });
@@ -214,7 +221,9 @@ public class MainActivity extends BaseActivity implements
             }
         }).start();
     }
-
+  /**
+   * 连接API
+   */
     public Response Getdata(String type) throws IOException {
         OkHttpClient okHttpClient=new OkHttpClient();
         Request build = new Request.Builder().get().url("http://v.juhe.cn/calendar/day?key=391c011ad08233f5f4bd0d342e1ba0f5&date="+type).build();
