@@ -7,14 +7,20 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.haibin.calendarview.Calendar;
 import com.haibin.calendarview.CalendarLayout;
 import com.haibin.calendarview.CalendarView;
 import com.haibin.calendarviewproject.base.activity.BaseActivity;
 
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MainActivity extends BaseActivity implements
         CalendarView.OnDateSelectedListener,
@@ -26,6 +32,7 @@ public class MainActivity extends BaseActivity implements
     TextView mTextMonthDay;
 
     TextView mTextYear;
+    TextView tttt;
 
     TextView mTextLunar;
 
@@ -49,6 +56,7 @@ public class MainActivity extends BaseActivity implements
         mTextMonthDay = (TextView) findViewById(R.id.tv_month_day);
         mTextYear = (TextView) findViewById(R.id.tv_year);
         mTextLunar = (TextView) findViewById(R.id.tv_lunar);
+        tttt = (TextView) findViewById(R.id.tttt);
         mRelativeTool = (RelativeLayout) findViewById(R.id.rl_tool);
         mCalendarView = (CalendarView) findViewById(R.id.calendarView);
         mTextCurrentDay = (TextView) findViewById(R.id.tv_current_day);
@@ -163,6 +171,8 @@ public class MainActivity extends BaseActivity implements
         mYear = calendar.getYear();
         if (isClick) {
             Toast.makeText(this, getCalendarText(calendar), Toast.LENGTH_SHORT).show();
+            String date=calendar.getYear()+"-"+calendar.getMonth()+"-"+calendar.getDay();
+            Setdata(date);
         }
     }
 
@@ -179,6 +189,38 @@ public class MainActivity extends BaseActivity implements
                 TextUtils.isEmpty(calendar.getTraditionFestival()) ? "无" : calendar.getTraditionFestival(),
                 TextUtils.isEmpty(calendar.getSolarTerm()) ? "无" : calendar.getSolarTerm(),
                 calendar.getLeapMonth() == 0 ? "否" : String.format("闰%s月", calendar.getLeapMonth()));
+    }
+
+    public void Setdata(final String time){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Response getdata = Getdata(time);
+                    if(getdata.code()==200){
+                        final Rilibean json = new Gson().fromJson(getdata.body().string(), Rilibean.class);
+                        if(json!=null){
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                tttt.setText(json.getResult().getData().toString());
+                            }
+                        });
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    public Response Getdata(String type) throws IOException {
+        OkHttpClient okHttpClient=new OkHttpClient();
+        Request build = new Request.Builder().get().url("http://v.juhe.cn/calendar/day?key=391c011ad08233f5f4bd0d342e1ba0f5&date="+type).build();
+
+        Response execute = okHttpClient.newCall(build).execute();
+        return execute;
     }
 
     @Override
