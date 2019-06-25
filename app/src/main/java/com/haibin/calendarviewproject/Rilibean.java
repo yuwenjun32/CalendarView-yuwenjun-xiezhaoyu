@@ -56,16 +56,13 @@ public class Rilibean {
         public static class DataBean {
             @Override
             public String toString() {
-                return "DataBean{" +'\n'+
-                        "avoid='" + avoid + '\n' +
-                        "animalsYear='" + animalsYear + '\n' +
-                        "weekday='" + weekday + '\n' +
-                        "suit='" + suit + '\n' +
-                        "lunarYear='" + lunarYear + '\n' +
-                        "lunar='" + lunar + '\n' +
-                        "yearmonth='" + yearmonth + '\n' +
-                        "date='" + date + '\n' +
-                        '}';
+                return "今日日程：" +'\n'+
+                        "日期：" + date +"  "+ weekday +'\n'+
+                        "农历日期：" + lunar + '\n' +
+                        "生肖年：" + lunarYear +"  "+ animalsYear + "年"+'\n' +
+                        "宜：" + avoid + '\n' +
+                        "忌：" + suit + '\n'
+                        ;
             }
 
             /**
