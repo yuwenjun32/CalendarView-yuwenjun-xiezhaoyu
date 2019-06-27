@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".yindaoye.YinDaoYeActivity"
+    android:background="@drawable/yidaoye">
+
+    <TextView
+        android:id="@+id/tv_regou"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="热狗日历"
+        android:textAllCaps="true"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="50dp"/>
+
+</LinearLayout>

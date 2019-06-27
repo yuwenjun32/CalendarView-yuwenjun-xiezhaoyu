@@ -139,17 +139,19 @@
         <android.support.v4.widget.NestedScrollView
             android:id="@+id/nestedScrollView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:id="@+id/tttt"
-                android:textSize="20sp"
+                android:textSize="25sp"
                 android:gravity="center_vertical"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"/>
+                android:layout_marginRight="20dp"
+                android:lineSpacingExtra="10dp"/>
+
         </android.support.v4.widget.NestedScrollView>
     </com.haibin.calendarview.CalendarLayout>
 
